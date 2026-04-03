@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollAnimations();
     initGalleryFilters();
     loadSavedPhotos();
+    loadSavedInlinePhotos();
+    initPlaceholderImages();
 });
 
 // ==================== FLOATING HEARTS ====================
@@ -494,3 +496,186 @@ window.addEventListener('scroll', () => {
         heroBg.style.transform = `translateY(${scrolled * 0.3}px)`;
     }
 });
+
+// ==================== PLACEHOLDER IMAGES ====================
+function initPlaceholderImages() {
+    const allImgContainers = document.querySelectorAll(
+        '.timeline-img-container, .sweet-img-container, .adventure-img-container'
+    );
+
+    allImgContainers.forEach(container => {
+        const img = container.querySelector('img');
+        const placeholder = container.querySelector('.img-placeholder');
+
+        if (img && (!img.src || img.src === window.location.href || img.src === '')) {
+            // Walang photo pa - itago ang broken image
+            img.style.display = 'none';
+
+            // Ipakita yung magandang placeholder
+            if (placeholder) {
+                placeholder.classList.remove('hidden');
+            }
+        } else if (img && img.src && img.src !== window.location.href) {
+            // May photo na - ipakita ang image, itago placeholder
+            img.classList.add('loaded');
+            img.style.display = 'block';
+
+            if (placeholder) {
+                placeholder.classList.add('hidden');
+            }
+        }
+    });
+
+    // Also handle hero background
+    initHeroUpload();
+}
+
+// ==================== HERO BACKGROUND UPLOAD ====================
+function initHeroUpload() {
+    const heroBg = document.getElementById('heroBg');
+
+    // Check kung may saved hero photo
+    const savedHero = localStorage.getItem('loveStoryHeroBg');
+    if (savedHero) {
+        heroBg.style.backgroundImage = `url(${savedHero})`;
+        heroBg.style.backgroundSize = 'cover';
+        heroBg.style.backgroundPosition = 'center';
+    }
+
+    // Double-click sa hero para mag upload ng background photo
+    heroBg.addEventListener('dblclick', () => {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = 'image/*';
+        input.onchange = (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (ev) => {
+                const imgData = ev.target.result;
+                heroBg.style.backgroundImage = `url(${imgData})`;
+                heroBg.style.backgroundSize = 'cover';
+                heroBg.style.backgroundPosition = 'center';
+
+                // Save sa localStorage
+                try {
+                    localStorage.setItem('loveStoryHeroBg', imgData);
+                    showToast('💕 Hero background updated!');
+                } catch (err) {
+                    showToast('⚠️ Photo too large to save locally');
+                }
+            };
+            reader.readAsDataURL(file);
+        };
+        input.click();
+    });
+}
+
+// ==================== ENHANCED INLINE UPLOAD ====================
+// I-replace mo yung existing handleInlineUpload function ng ito:
+function handleInlineUpload(event) {
+    const file = event.target.files[0];
+    if (!file || !currentUploadTarget) return;
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        const container = currentUploadTarget.parentElement;
+        const img = container.querySelector('img');
+
+        if (img) {
+            img.src = e.target.result;
+            img.classList.add('loaded');
+            img.style.display = 'block';
+            currentUploadTarget.classList.add('hidden');
+
+            // Smooth fade in effect
+            img.style.opacity = '0';
+            img.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => {
+                img.style.opacity = '1';
+            }, 50);
+
+            // Save inline photo with location info
+            const section = container.closest('section');
+            const sectionId = section ? section.id : 'general';
+            const cardIndex = getCardIndex(container);
+
+            try {
+                let inlinePhotos = JSON.parse(
+                    localStorage.getItem('loveStoryInlinePhotos') || '{}'
+                );
+                const key = `${sectionId}-${cardIndex}`;
+                inlinePhotos[key] = e.target.result;
+                localStorage.setItem(
+                    'loveStoryInlinePhotos',
+                    JSON.stringify(inlinePhotos)
+                );
+            } catch (err) {
+                console.warn('Storage full for inline photos');
+            }
+
+            showToast('💕 Photo added!');
+        }
+
+        currentUploadTarget = null;
+    };
+    reader.readAsDataURL(file);
+
+    // Reset file input para pwede mag upload ulit ng same file
+    event.target.value = '';
+}
+
+// Helper: Get index of card within its section
+function getCardIndex(element) {
+    const section = element.closest('section');
+    if (!section) return 0;
+
+    const allContainers = section.querySelectorAll(
+        '.timeline-img-container, .sweet-img-container, .adventure-img-container'
+    );
+
+    let index = 0;
+    allContainers.forEach((container, i) => {
+        if (container === element || container.contains(element)) {
+            index = i;
+        }
+    });
+    return index;
+}
+
+// ==================== LOAD SAVED INLINE PHOTOS ====================
+function loadSavedInlinePhotos() {
+    try {
+        const inlinePhotos = JSON.parse(
+            localStorage.getItem('loveStoryInlinePhotos') || '{}'
+        );
+
+        Object.keys(inlinePhotos).forEach(key => {
+            const [sectionId, cardIndex] = key.split('-');
+            const section = document.getElementById(sectionId);
+            if (!section) return;
+
+            const containers = section.querySelectorAll(
+                '.timeline-img-container, .sweet-img-container, .adventure-img-container'
+            );
+
+            const container = containers[parseInt(cardIndex)];
+            if (!container) return;
+
+            const img = container.querySelector('img');
+            const placeholder = container.querySelector('.img-placeholder');
+
+            if (img) {
+                img.src = inlinePhotos[key];
+                img.classList.add('loaded');
+                img.style.display = 'block';
+            }
+            if (placeholder) {
+                placeholder.classList.add('hidden');
+            }
+        });
+    } catch (err) {
+        console.warn('Error loading inline photos:', err);
+    }
+}
