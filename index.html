@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Love Story 💕</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Floating Hearts Background -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <!-- Music Toggle -->
+    <button class="music-toggle" id="musicToggle" title="Toggle Music">
+        <i class="fas fa-music"></i>
+    </button>
+    <audio id="bgMusic" loop>
+        <source src="" type="audio/mpeg">
+        <!-- Add your song URL/file here -->
+    </audio>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-brand">
+            <span class="heart-icon">��</span> Our Story
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="#home" class="nav-link active">Home</a>
+            <a href="#timeline" class="nav-link">Timeline</a>
+            <a href="#gallery" class="nav-link">Gallery</a>
+            <a href="#sweet-moments" class="nav-link">Sweet Moments</a>
+            <a href="#adventures" class="nav-link">Adventures</a>
+            <a href="#messages" class="nav-link">Messages</a>
+            <a href="#upload" class="nav-link">Upload</a>
+        </div>
+        <button class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section id="home" class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-hearts">
+                <span>💖</span><span>💕</span><span>💗</span>
+            </div>
+            <h1 class="hero-title">
+                <span class="name his-name">Your Name</span>
+                <span class="ampersand">&</span>
+                <span class="name her-name">Her Name</span>
+            </h1>
+            <p class="hero-subtitle">Our Love Story</p>
+            <div class="counter-container">
+                <p class="counter-label">Together for</p>
+                <div class="counter" id="loveCounter">
+                    <div class="counter-item">
+                        <span class="counter-number" id="years">0</span>
+                        <span class="counter-text">Years</span>
+                    </div>
+                    <div class="counter-item">
+                        <span class="counter-number" id="months">0</span>
+                        <span class="counter-text">Months</span>
+                    </div>
+                    <div class="counter-item">
+                        <span class="counter-number" id="days">0</span>
+                        <span class="counter-text">Days</span>
+                    </div>
+                    <div class="counter-item">
+                        <span class="counter-number" id="hours">0</span>
+                        <span class="counter-text">Hours</span>
+                    </div>
+                    <div class="counter-item">
+                        <span class="counter-number" id="minutes">0</span>
+                        <span class="counter-text">Minutes</span>
+                    </div>
+                    <div class="counter-item">
+                        <span class="counter-number" id="seconds">0</span>
+                        <span class="counter-text">Seconds</span>
+                    </div>
+                </div>
+            </div>
+            <a href="#timeline" class="scroll-down">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+        <!-- Hero background pic - upload your fave couple pic -->
+        <div class="hero-bg" id="heroBg"></div>
+    </section>
+
+    <!-- ==================== TIMELINE SECTION ==================== -->
+    <section id="timeline" class="section timeline-section">
+        <div class="section-header">
+            <h2 class="section-title">Our Journey Together</h2>
+            <p class="section-subtitle">Every moment with you is a chapter worth remembering 💕</p>
+        </div>
+        <div class="timeline">
+            <!-- Timeline items will be added dynamically or manually -->
+            <div class="timeline-item left" data-aos="fade-right">
+                <div class="timeline-content">
+                    <div class="timeline-date">
+                        <i class="fas fa-calendar-heart"></i> January 2023
+                    </div>
+                    <div class="timeline-img-container">
+                        <img src="" alt="First Meet" class="timeline-img" data-placeholder="first-meet">
+                        <div class="img-placeholder" onclick="triggerUpload(this)">
+                            <i class="fas fa-camera"></i>
+                            <span>Click to add photo</span>
+                        </div>
+                    </div>
+                    <h3 class="timeline-title">✨ The Day We Met</h3>
+                    <p class="timeline-text">
+                        Dito nagsimula ang lahat. Hindi ko alam na ang simpleng pagkikita natin 
+                        ay magbabago ng buhay ko forever. 💫
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item right" data-aos="fade-left">
+                <div class="timeline-content">
+                    <div class="timeline-date">
+                        <i class="fas fa-calendar-heart"></i> February 2023
+                    </div>
+                    <div class="timeline-img-container">
+                        <img src="" alt="First Date" class="timeline-img" data-placeholder="first-date">
+                        <div class="img-placeholder" onclick="triggerUpload(this)">
+                            <i class="fas fa-camera"></i>
+                            <span>Click to add photo</span>
+                        </div>
+                    </div>
+                    <h3 class="timeline-title">🌹 First Date</h3>
+                    <p class="timeline-text">
+                        Kabado ako nun pero masaya. Simula nun, alam ko nang ikaw ang gusto kong 
+                        makasama palagi. 🥰
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item left" data-aos="fade-right">
+                <div class="timeline-content">
+                    <div class="timeline-date">
+                        <i class="fas fa-calendar-heart"></i> March 2023
+                    </div>
+                    <div class="timeline-img-container">
+                        <img src="" alt="Official" class="timeline-img" data-placeholder="official">
+                        <div class="img-placeholder" onclick="triggerUpload(this)">
+                            <i class="fas fa-camera"></i>
+                            <span>Click to add photo</span>
+                        </div>
+                    </div>
+                    <h3 class="timeline-title">💕 Officially Ours</h3>
+                    <p class="timeline-text">
+                        The day you said yes! Pinaka-masayang araw ng buhay ko. 
+                        Simula ng forever natin. 💍
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item right" data-aos="fade-left">
+                <div class="timeline-content">
+                    <div class="timeline-date">
+                        <i class="fas fa-calendar-heart"></i> June 2023
+                    </div>
+                    <div class="timeline-img-container">
+                        <img src="" alt="Monthsary" class="timeline-img" data-placeholder="monthsary">
+                        <div class="img-placeholder" onclick="triggerUpload(this)">
+                            <i class="fas fa-camera"></i>
+                            <span>Click to add photo</span>
+                        </div>
+                    </div>
+                    <h3 class="timeline-title">🎉 First Monthsary Milestones</h3>
+                    <p class="timeline-text">
+                        Bawat buwan na lumipas, lalo kitang nakilala at lalo kitang minahal. 
+                        Salamat sa bawat monthsary natin! 🥂
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item left" data-aos="fade-right">
+                <div class="timeline-content">
+                    <div class="timeline-date">
+                        <i class="fas fa-calendar-heart"></i> December 2023
+                    </div>
+                    <div class="timeline-img-container">
+                        <img src="" alt="Christmas" class="timeline-img" data-placeholder="christmas">
+                        <div class="img-placeholder" onclick="triggerUpload(this)">
+                            <i class="fas fa-camera"></i>
+                            <span>Click to add photo</span>
+                        </div>
+                    </div>
+                    <h3 class="timeline-title">🎄 First Christmas Together</h3>
+                    <p class="timeline-text">
+                        Ikaw ang pinakamagandang regalo na natanggap ko. 
+                        Merry Christmas, mahal ko! 🎁❤️
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item right" data-aos="fade-left">
+                <div class="timeline-content">
+                    <div class="timeline-date">
+                        <i class="fas fa-calendar-heart"></i> 2024 - Present
+                    </div>
+                    <div class="timeline-img-container">
+                        <img src="" alt="Present" class="timeline-img" data-placeholder="present">
+                        <div class="img-placeholder" onclick="triggerUpload(this)">
+                            <i class="fas fa-camera"></i>
+                            <span>Click to add photo</span>
+                        </div>
+                    </div>
+                    <h3 class="timeline-title">🚀 Still Going Strong</h3>
+                    <p class="timeline-text">
+                        At hanggang ngayon, ikaw pa rin ang pipiliin ko. 
+                        Araw-araw, ikaw ang dahilan ng ngiti ko. Forever tayo, mahal! 💪❤️
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== GALLERY SECTION ==================== -->
+    <section id="gallery" class="section gallery-section">
+        <div class="section-header">
+            <h2 class="section-title">📸 Our Gallery</h2>
+            <p class="section-subtitle">A collection of our favorite moments together</p>
+        </div>
+        
+        <!-- Gallery Filter -->
+        <div class="gallery-filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="selfie">Selfies</button>
+            <button class="filter-btn" data-filter="date">Dates</button>
+            <button class="filter-btn" data-filter="travel">Travel</button>
+            <button class="filter-btn" data-filter="random">Random</button>
+        </div>
+
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- Gallery items will be populated by uploaded images -->
+            <div class="gallery-placeholder">
+                <div class="placeholder-content" onclick="document.getElementById('galleryUpload').click()">
+                    <i class="fas fa-plus-circle"></i>
+                    <p>Add Photos to Gallery</p>
+                </div>
+            </div>
+        </div>
+        <input type="file" id="galleryUpload" multiple accept="image/*" style="display:none" onchange="handleGalleryUpload(event)">
+    </section>
+
+    <!-- ==================== SWEET MOMENTS SECTION ==================== -->
+    <section id="sweet-moments" class="section sweet-section">
+        <div class="section-header">
+            <h2 class="section-title">💕 Sweet Moments</h2>
+            <p class="section-subtitle">Yung mga moments na kinikilig pa rin ako pag naalala</p>
+        </div>
+
+        <div class="sweet-grid" id="sweetGrid">
+            <!-- Sweet moment cards with messages -->
+            <div class="sweet-card" data-aos="zoom-in">
+                <div class="sweet-img-container">
+                    <img src="" alt="Sweet 1" class="sweet-img">
+                    <div class="img-placeholder" onclick="triggerUpload(this)">
+                        <i class="fas fa-heart"></i>
+                        <span>Add sweet photo</span>
+                    </div>
+                </div>
+                <div class="sweet-message">
+                    <div class="message-icon">💌</div>
+                    <p>"Mahal, salamat sa lahat ng pagmamahal mo. Hindi ko alam kung ano ang buhay ko kung wala ka. You complete me. 💕"</p>
+                </div>
+            </div>
+
+            <div class="sweet-card" data-aos="zoom-in" data-aos-delay="100">
+                <div class="sweet-img-container">
+                    <img src="" alt="Sweet 2" class="sweet-img">
+                    <div class="img-placeholder" onclick="triggerUpload(this)">
+                        <i class="fas fa-heart"></i>
+                        <span>Add sweet photo</span>
+                    </div>
+                </div>
+                <div class="sweet-message">
+                    <div class="message-icon">🥰</div>
+                    <p>"Yung mga simpleng moments natin - kumakain, nagkukwentuhan, nagtatawanan - yun ang pinaka-masaya kong memories."</p>
+                </div>
+            </div>
+
+            <div class="sweet-card" data-aos="zoom-in" data-aos-delay="200">
+                <div class="sweet-img-container">
+                    <img src="" alt="Sweet 3" class="sweet-img">
+                    <div class="img-placeholder" onclick="triggerUpload(this)">
+                        <i class="fas fa-heart"></i>
+                        <span>Add sweet photo</span>
+                    </div>
+                </div>
+                <div class="sweet-message">
+                    <div class="message-icon">✨</div>
+                    <p>"Sa lahat ng tao sa mundo, ikaw ang pinili ng puso ko. At pipiliin kita ulit-ulit kung bibigyan ako ng pagkakataon."</p>
+                </div>
+            </div>
+
+            <div class="sweet-card" data-aos="zoom-in" data-aos-delay="300">
+                <div class="sweet-img-container">
+                    <img src="" alt="Sweet 4" class="sweet-img">
+                    <div class="img-placeholder" onclick="triggerUpload(this)">
+                        <i class="fas fa-heart"></i>
+                        <span>Add sweet photo</span>
+                    </div>
+                </div>
+                <div class="sweet-message">
+                    <div class="message-icon">💋</div>
+                    <p>"Every time I look at you, I fall in love all over again. You're my favorite person in this whole world, mahal ko."</p>
+                </div>
+            </div>
+
+            <div class="sweet-card" data-aos="zoom-in" data-aos-delay="400">
+                <div class="sweet-img-container">
+                    <img src="" alt="Sweet 5" class="sweet-img">
+                    <div class="img-placeholder" onclick="triggerUpload(this)">
+                        <i class="fas fa-heart"></i>
+                        <span>Add sweet photo</span>
+                    </div>
+                </div>
+                <div class="sweet-message">
+                    <div class="message-icon">🌙</div>
+                    <p>"Kahit gaano kahirap ang araw ko, pag nakita kita o naririnig ang boses mo, parang okay na lahat. Ikaw ang peace ko."</p>
+                </div>
+            </div>
+
+            <div class="sweet-card" data-aos="zoom-in" data-aos-delay="500">
+                <div class="sweet-img-container">
+                    <img src="" alt="Sweet 6" class="sweet-img">
+                    <div class="img-placeholder" onclick="triggerUpload(this)">
+                        <i class="fas fa-heart"></i>
+                        <span>Add sweet photo</span>
+                    </div>
+                </div>
+                <div class="sweet-message">
+                    <div class="message-icon">🔥</div>
+                    <p>"Hindi perfect ang relationship natin, pero perfect ka para sa akin. Love you more than words can say, babe. 💗"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== ADVENTURES SECTION ==================== -->
+    <section id="adventures" class="section adventures-section">
+        <div class="section-header">
+            <h2 class="section-title">🗺️ Our Adventures</h2>
+            <p class="section-subtitle">Mga lakad at travel natin na unforgettable</p>
+        </div>
+
+        <div class="adventures-carousel" id="adventuresCarousel">
+            <button class="carousel-btn prev" onclick="moveCarousel(-1)">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="carousel-track" id="carouselTrack">
+                <div class="adventure-slide">
+                    <div class="adventure-card">
+                        <div class="adventure-img-container">
+                            <img src="" alt="Adventure 1" class="adventure-img">
+                            <div class="img-placeholder" onclick="triggerUpload(this)">
+                                <i class="fas fa-plane"></i>
+                                <span>Add adventure photo</span>
+                            </div>
+                        </div>
+                        <div class="adventure-info">
+                            <h3>📍 First Lakad</h3>
+                            <p>Saan man tayo mapunta, basta kasama kita, masaya na ako! 🚗</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="adventure-slide">
+                    <div class="adventure-card">
+                        <div class="adventure-img-container">
+                            <img src="" alt="Adventure 2" class="adventure-img">
+                            <div class="img-placeholder" onclick="triggerUpload(this)">
+                                <i class="fas fa-plane"></i>
+                                <span>Add adventure photo</span>
+                            </div>
+                        </div>
+                        <div class="adventure-info">
+                            <h3>📍 Food Trip</h3>
+                            <p>Kain tayo palagi! Basta kasama kita, kahit saan masarap! 🍕</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="adventure-slide">
+                    <div class="adventure-card">
+                        <div class="adventure-img-container">
+                            <img src="" alt="Adventure 3" class="adventure-img">
+                            <div class="img-placeholder" onclick="triggerUpload(this)">
+                                <i class="fas fa-plane"></i>
+                                <span>Add adventure photo</span>
+                            </div>
+                        </div>
+                        <div class="adventure-info">
+                            <h3>📍 Beach Date</h3>
+                            <p>Sunset na view pero ikaw pa rin ang pinakamagandang view ko! 🌅</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="adventure-slide">
+                    <div class="adventure-card">
+                        <div class="adventure-img-container">
+                            <img src="" alt="Adventure 4" class="adventure-img">
+                            <div class="img-placeholder" onclick="triggerUpload(this)">
+                                <i class="fas fa-plane"></i>
+                                <span>Add adventure photo</span>
+                            </div>
+                        </div>
+                        <div class="adventure-info">
+                            <h3>📍 Night Out</h3>
+                            <p>Mga gabi na magkasama tayo, yun ang gusto kong paulit-ulitin! 🌃</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-btn next" onclick="moveCarousel(1)">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- ==================== MESSAGES SECTION ==================== -->
+    <section id="messages" class="section messages-section">
+        <div class="section-header">
+            <h2 class="section-title">💌 Love Letters</h2>
+            <p class="section-subtitle">Mga mensahe mula sa puso ko para sa'yo</p>
+        </div>
+
+        <div class="letters-container">
+            <div class="letter-card" data-aos="fade-up">
+                <div class="letter-envelope">
+                    <div class="envelope-flap"></div>
+                    <div class="envelope-body">
+                        <div class="letter-paper">
+                            <p class="letter-greeting">Mahal ko,</p>
+                            <p class="letter-body">
+                                Hindi ko alam kung paano ko ipapaliwanag ang nararamdaman ko para sa'yo. 
+                                Pero alam ko na ikaw ang taong gusto kong makasama habambuhay. 
+                                Salamat sa pagmamahal mo, sa pasensya mo, at sa pagiging ikaw. 
+                                I love you more than you'll ever know. 💕
+                            </p>
+                            <p class="letter-signature">- Your Love 💋</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="letter-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="letter-envelope">
+                    <div class="envelope-flap"></div>
+                    <div class="envelope-body">
+                        <div class="letter-paper">
+                            <p class="letter-greeting">My Baby,</p>
+                            <p class="letter-body">
+                                Sa bawat araw na lumilipas, lalo akong nahuhulog sa'yo. 
+                                Ikaw ang reason ko para maging better person. 
+                                Promise ko sa'yo, aalagaan kita at mamahalin kita ng buong puso ko. 
+                                Tayo hanggang sa dulo, mahal. Forever yours. ❤️
+                            </p>
+                            <p class="letter-signature">- Always Yours 🌹</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="letter-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="letter-envelope">
+                    <div class="envelope-flap"></div>
+                    <div class="envelope-body">
+                        <div class="letter-paper">
+                            <p class="letter-greeting">To My Person,</p>
+                            <p class="letter-body">
+                                Thank you for being my safe place. Thank you for understanding me 
+                                even when I can't explain myself. You are my home, my comfort, and my 
+                                greatest adventure. Mahal kita ng sobra-sobra. Walang makakapantay sa'yo. 🥺💖
+                            </p>
+                            <p class="letter-signature">- Your Forever 💫</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== UPLOAD SECTION ==================== -->
+    <section id="upload" class="section upload-section">
+        <div class="section-header">
+            <h2 class="section-title">📤 Upload Our Photos</h2>
+            <p class="section-subtitle">Drag & drop or click para mag-add ng photos</p>
+        </div>
+
+        <div class="upload-container">
+            <div class="upload-zone" id="uploadZone">
+                <div class="upload-icon">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                </div>
+                <h3>Drag & Drop Photos Here</h3>
+                <p>or click to browse files</p>
+                <p class="upload-note">Supports: JPG, PNG, WEBP | Max: 10MB per file</p>
+                <input type="file" id="fileInput" multiple accept="image/*" style="display:none">
+            </div>
+
+            <!-- Category Selection -->
+            <div class="upload-options">
+                <label>Category:</label>
+                <select id="uploadCategory">
+                    <option value="timeline">Timeline</option>
+                    <option value="gallery">Gallery</option>
+                    <option value="sweet">Sweet Moments</option>
+                    <option value="adventures">Adventures</option>
+                </select>
+                <label>Filter Tag:</label>
+                <select id="uploadFilter">
+                    <option value="all">General</option>
+                    <option value="selfie">Selfie</option>
+                    <option value="date">Date</option>
+                    <option value="travel">Travel</option>
+                    <option value="random">Random</option>
+                </select>
+            </div>
+
+            <!-- Upload Preview -->
+            <div class="upload-preview" id="uploadPreview"></div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-hearts">💕💖💕</div>
+            <h3>Forever & Always</h3>
+            <p>Made with love for the most amazing person in my life</p>
+            <p class="footer-names">Your Name ❤️ Her Name</p>
+            <p class="footer-year">© 2024 | Our Love Story</p>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()">
+            <i class="fas fa-times"></i>
+        </button>
+        <button class="lightbox-nav prev" onclick="navigateLightbox(-1)">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="lightbox-content">
+            <img src="" alt="" id="lightboxImg">
+            <p class="lightbox-caption" id="lightboxCaption"></p>
+        </div>
+        <button class="lightbox-nav next" onclick="navigateLightbox(1)">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+
+    <!-- Hidden file input for inline uploads -->
+    <input type="file" id="inlineUpload" accept="image/*" style="display:none" onchange="handleInlineUpload(event)">
+
+    <script src="js/script.js"></script>
+</body>
+</html>
