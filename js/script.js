@@ -1,6 +1,6 @@
 // ==================== CONFIGURATION ====================
 // PALITAN MO ITO NG ACTUAL DATE NIYO!
-const ANNIVERSARY_DATE = new Date('2023-03-15'); // Format: YYYY-MM-DD
+const ANNIVERSARY_DATE = new Date('2025-06-22'); // Format: YYYY-MM-DD
 
 // ==================== INITIALIZATION ====================
 document.addEventListener('DOMContentLoaded', () => {
